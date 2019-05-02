@@ -10,8 +10,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.util.StringUtils;
 
-import com.sequenceiq.environment.env.api.controller.EnvironmentController;
-import com.sequenceiq.environment.env.api.model.EnvironmentApi;
+import com.sequenceiq.environment.api.environment.EnvironmentController;
+import com.sequenceiq.environment.api.EnvironmentApi;
 import com.sequenceiq.environment.exception.mapper.DefaultExceptionMapper;
 import com.sequenceiq.environment.exception.mapper.WebApplicaitonExceptionMapper;
 
@@ -79,4 +79,5 @@ public class EndpointConfig extends ResourceConfig {
         register(io.swagger.jaxrs.listing.SwaggerSerializers.class);
         register(io.swagger.jaxrs.listing.AcceptHeaderApiListingResource.class);
     }
+
 }
