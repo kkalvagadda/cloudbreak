@@ -38,6 +38,7 @@ import com.sequenceiq.cloudbreak.api.endpoint.v4.environment.responses.DetailedE
 import com.sequenceiq.cloudbreak.api.endpoint.v4.environment.responses.SimpleEnvironmentV4Response;
 import com.sequenceiq.cloudbreak.cloud.model.CloudRegions;
 import com.sequenceiq.cloudbreak.cloud.model.Coordinate;
+import com.sequenceiq.cloudbreak.cloud.model.CreatedCloudNetwork;
 import com.sequenceiq.cloudbreak.cluster.api.DatalakeConfigApi;
 import com.sequenceiq.cloudbreak.common.json.Json;
 import com.sequenceiq.cloudbreak.common.service.TransactionService;
@@ -80,6 +81,7 @@ import com.sequenceiq.cloudbreak.service.rdsconfig.RdsConfigService;
 import com.sequenceiq.cloudbreak.service.sharedservice.AmbariDatalakeConfigProvider;
 import com.sequenceiq.cloudbreak.service.sharedservice.DatalakeConfigApiConnector;
 import com.sequenceiq.cloudbreak.service.sharedservice.ServiceDescriptorDefinitionProvider;
+import com.sequenceiq.cloudbreak.service.stack.CloudNetworkCreationService;
 import com.sequenceiq.cloudbreak.service.stack.StackApiViewService;
 import com.sequenceiq.cloudbreak.service.stack.StackService;
 import com.sequenceiq.cloudbreak.workspace.repository.workspace.WorkspaceResourceRepository;
@@ -162,6 +164,9 @@ public class EnvironmentService extends AbstractArchivistService<Environment> {
 
     @Inject
     private Map<CloudPlatform, EnvironmentNetworkConverter> environmentNetworkConverterMap;
+
+    @Inject
+    private CloudNetworkCreationService cloudNetworkCreationService;
 
     public Set<SimpleEnvironmentV4Response> listByWorkspaceId(Long workspaceId) {
         Set<SimpleEnvironmentV4Response> environmentResponses = environmentViewService.findAllByWorkspaceId(workspaceId).stream()
@@ -509,10 +514,24 @@ public class EnvironmentService extends AbstractArchivistService<Environment> {
         if (networkRequest != null) {
             EnvironmentNetworkConverter environmentNetworkConverter = environmentNetworkConverterMap.get(cloudPlatform);
             if (environmentNetworkConverter != null) {
-                BaseNetwork baseNetwork = environmentNetworkConverter.convert(networkRequest, environment);
+                BaseNetwork baseNetwork = environmentNetworkConverter.hasExistingNetwork(networkRequest)
+                        ? environmentNetworkConverter.convert(networkRequest, environment)
+                        : createNewCloudNetwork(environmentNetworkConverter, networkRequest, environment);
                 network = environmentNetworkService.save(baseNetwork);
             }
         }
         return network;
+    }
+
+    private BaseNetwork createNewCloudNetwork(EnvironmentNetworkConverter environmentNetworkConverter, EnvironmentNetworkV4Request networkRequest,
+            Environment environment) {
+        CreatedCloudNetwork createdCloudNetwork = cloudNetworkCreationService.createCloudNetwork(
+                environment.getName(),
+                environment.getCredential(),
+                environment.getCloudPlatform(),
+                environment.getLocation(),
+                networkRequest.getNetworkCidr(),
+                networkRequest.getSubnetCidrs());
+        return environmentNetworkConverter.convertNewNetwork(networkRequest, environment, createdCloudNetwork);
     }
 }
