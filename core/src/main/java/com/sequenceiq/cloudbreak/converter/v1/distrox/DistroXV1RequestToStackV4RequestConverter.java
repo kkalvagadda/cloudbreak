@@ -12,6 +12,7 @@ public class DistroXV1RequestToStackV4RequestConverter
 
     @Override
     public StackV4Request convert(DistroXV1Request source) {
-        return null;
+        StackV4Request stackV4Request = new StackV4Request();
+        return stackV4Request;
     }
 }

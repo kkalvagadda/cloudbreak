@@ -9,7 +9,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.request.cluster.repository.RepositoryV1Request;
 import com.sequenceiq.cloudbreak.api.endpoint.v4.JsonEntity;
 import com.sequenceiq.cloudbreak.api.endpoint.v4.stacks.base.StatusRequest;
-import com.sequenceiq.cloudbreak.api.model.annotations.TransformGetterType;
 import com.sequenceiq.cloudbreak.doc.ModelDescriptions.ClusterModelDescription;
 import com.sequenceiq.cloudbreak.doc.ModelDescriptions.StackModelDescription;
 
@@ -31,10 +30,6 @@ public class UpdateDistroXV1Request implements JsonEntity {
 
     @ApiModelProperty(ClusterModelDescription.BLUEPRINT_ID)
     private String blueprintName;
-
-    @TransformGetterType
-    @ApiModelProperty(ClusterModelDescription.VALIDATE_BLUEPRINT)
-    private Boolean validateBlueprint = Boolean.TRUE;
 
     @ApiModelProperty(ClusterModelDescription.HOSTGROUPS)
     private Set<HostGroupV1Request> hostgroups;
@@ -80,14 +75,6 @@ public class UpdateDistroXV1Request implements JsonEntity {
 
     public void setBlueprintName(String blueprintName) {
         this.blueprintName = blueprintName;
-    }
-
-    public Boolean getValidateBlueprint() {
-        return validateBlueprint;
-    }
-
-    public void setValidateBlueprint(Boolean validateBlueprint) {
-        this.validateBlueprint = validateBlueprint;
     }
 
     public Set<HostGroupV1Request> getHostgroups() {

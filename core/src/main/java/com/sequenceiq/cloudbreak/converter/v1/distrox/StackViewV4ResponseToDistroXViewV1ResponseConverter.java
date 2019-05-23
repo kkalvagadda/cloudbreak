@@ -11,6 +11,8 @@ public class StackViewV4ResponseToDistroXViewV1ResponseConverter
         extends AbstractConversionServiceAwareConverter<StackViewV4Response, DistroXViewV1Response> {
     @Override
     public DistroXViewV1Response convert(StackViewV4Response source) {
-        return null;
+        DistroXViewV1Response distroXViewV1Response = new DistroXViewV1Response();
+        //source.getEnvironment()
+        return distroXViewV1Response;
     }
 }

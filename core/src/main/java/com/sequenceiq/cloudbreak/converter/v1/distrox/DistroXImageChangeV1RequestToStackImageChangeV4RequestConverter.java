@@ -11,6 +11,9 @@ public class DistroXImageChangeV1RequestToStackImageChangeV4RequestConverter
         extends AbstractConversionServiceAwareConverter<DistroXImageChangeV1Request, StackImageChangeV4Request> {
     @Override
     public StackImageChangeV4Request convert(DistroXImageChangeV1Request source) {
-        return null;
+        StackImageChangeV4Request stackImageChangeV4Request = new StackImageChangeV4Request();
+        stackImageChangeV4Request.setImageId(source.getImageId());
+        stackImageChangeV4Request.setImageCatalogName(source.getImageCatalogName());
+        return stackImageChangeV4Request;
     }
 }

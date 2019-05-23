@@ -23,7 +23,7 @@ public class DistroXScaleV1Request implements JsonEntity {
     @ApiModelProperty(value = InstanceGroupAdjustmentModelDescription.SCALING_ADJUSTMENT, required = true)
     private Integer desiredCount;
 
-    private Long stackId;
+    private String name;
 
     public String getGroup() {
         return group;
@@ -42,12 +42,12 @@ public class DistroXScaleV1Request implements JsonEntity {
     }
 
     @JsonIgnore
-    public Long getStackId() {
-        return stackId;
+    public String getName() {
+        return name;
     }
 
     @JsonIgnore
-    public void setStackId(Long stackId) {
-        this.stackId = stackId;
+    public void setName(String name) {
+        this.name = name;
     }
 }

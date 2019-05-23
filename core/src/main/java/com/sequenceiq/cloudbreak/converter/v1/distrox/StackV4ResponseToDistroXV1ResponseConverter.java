@@ -12,6 +12,7 @@ public class StackV4ResponseToDistroXV1ResponseConverter
 
     @Override
     public DistroXV1Response convert(StackV4Response source) {
-        return null;
+        DistroXV1Response distroXV1Response = new DistroXV1Response();
+        return distroXV1Response;
     }
 }
