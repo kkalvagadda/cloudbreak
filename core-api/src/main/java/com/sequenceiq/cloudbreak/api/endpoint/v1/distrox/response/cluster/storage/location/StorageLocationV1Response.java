@@ -11,6 +11,6 @@ import io.swagger.annotations.ApiModel;
 @ApiModel
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_NULL)
-public class StorageLocationV4Response extends StorageLocationV4Base {
+public class StorageLocationV1Response extends StorageLocationV4Base {
 
 }

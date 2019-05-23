@@ -5,8 +5,8 @@ import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.response.instancegroup.template.volume.RootVolumeV4Response;
-import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.response.instancegroup.template.volume.VolumeV4Response;
+import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.response.instancegroup.template.volume.RootVolumeV1Response;
+import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.response.instancegroup.template.volume.VolumeV1Response;
 import com.sequenceiq.cloudbreak.api.endpoint.v4.stacks.base.InstanceTemplateV4Base;
 import com.sequenceiq.cloudbreak.doc.ModelDescriptions;
 
@@ -16,16 +16,16 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_NULL)
-public class InstanceTemplateV4Response extends InstanceTemplateV4Base {
+public class InstanceTemplateV1Response extends InstanceTemplateV4Base {
 
     @ApiModelProperty(ModelDescriptions.ID)
     private Long id;
 
-    private RootVolumeV4Response rootVolume;
+    private RootVolumeV1Response rootVolume;
 
-    private VolumeV4Response ephemeralVolume;
+    private VolumeV1Response ephemeralVolume;
 
-    private Set<VolumeV4Response> attachedVolumes;
+    private Set<VolumeV1Response> attachedVolumes;
 
     public Long getId() {
         return id;
@@ -35,27 +35,27 @@ public class InstanceTemplateV4Response extends InstanceTemplateV4Base {
         this.id = id;
     }
 
-    public RootVolumeV4Response getRootVolume() {
+    public RootVolumeV1Response getRootVolume() {
         return rootVolume;
     }
 
-    public void setRootVolume(RootVolumeV4Response rootVolume) {
+    public void setRootVolume(RootVolumeV1Response rootVolume) {
         this.rootVolume = rootVolume;
     }
 
-    public VolumeV4Response getEphemeralVolume() {
+    public VolumeV1Response getEphemeralVolume() {
         return ephemeralVolume;
     }
 
-    public void setEphemeralVolume(VolumeV4Response ephemeralVolume) {
+    public void setEphemeralVolume(VolumeV1Response ephemeralVolume) {
         this.ephemeralVolume = ephemeralVolume;
     }
 
-    public Set<VolumeV4Response> getAttachedVolumes() {
+    public Set<VolumeV1Response> getAttachedVolumes() {
         return attachedVolumes;
     }
 
-    public void setAttachedVolumes(Set<VolumeV4Response> attachedVolumes) {
+    public void setAttachedVolumes(Set<VolumeV1Response> attachedVolumes) {
         this.attachedVolumes = attachedVolumes;
     }
 }

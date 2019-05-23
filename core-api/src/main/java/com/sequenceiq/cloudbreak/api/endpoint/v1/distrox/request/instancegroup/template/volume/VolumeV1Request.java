@@ -14,7 +14,7 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_NULL)
-public class VolumeV4Request extends RootVolumeV4Request {
+public class VolumeV1Request extends RootVolumeV1Request {
 
     @ApiModelProperty(VOLUME_COUNT)
     private Integer count;

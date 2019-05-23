@@ -9,8 +9,8 @@ import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.request.instancegroup.securitygroup.SecurityGroupV4Request;
-import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.request.instancegroup.template.InstanceTemplateV4Request;
+import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.request.instancegroup.securitygroup.SecurityGroupV1Request;
+import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.request.instancegroup.template.InstanceTemplateV1Request;
 import com.sequenceiq.cloudbreak.api.endpoint.v4.stacks.base.InstanceGroupV4Base;
 import com.sequenceiq.cloudbreak.api.endpoint.v4.stacks.base.RecoveryMode;
 import com.sequenceiq.cloudbreak.doc.ModelDescriptions.HostGroupModelDescription;
@@ -22,15 +22,15 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_NULL)
-public class InstanceGroupV4Request extends InstanceGroupV4Base {
+public class InstanceGroupV1Request extends InstanceGroupV4Base {
 
     @NotNull
     @ApiModelProperty(InstanceGroupModelDescription.TEMPLATE)
-    private InstanceTemplateV4Request template;
+    private InstanceTemplateV1Request template;
 
     @Valid
     @ApiModelProperty(InstanceGroupModelDescription.SECURITYGROUP)
-    private SecurityGroupV4Request securityGroup;
+    private SecurityGroupV1Request securityGroup;
 
     @ApiModelProperty(HostGroupModelDescription.RECIPE_NAMES)
     private Set<String> recipeNames = new HashSet<>();
@@ -38,19 +38,19 @@ public class InstanceGroupV4Request extends InstanceGroupV4Base {
     @ApiModelProperty(value = HostGroupModelDescription.RECOVERY_MODE, allowableValues = "MANUAL,AUTO")
     private RecoveryMode recoveryMode = RecoveryMode.MANUAL;
 
-    public InstanceTemplateV4Request getTemplate() {
+    public InstanceTemplateV1Request getTemplate() {
         return template;
     }
 
-    public void setTemplate(InstanceTemplateV4Request template) {
+    public void setTemplate(InstanceTemplateV1Request template) {
         this.template = template;
     }
 
-    public SecurityGroupV4Request getSecurityGroup() {
+    public SecurityGroupV1Request getSecurityGroup() {
         return securityGroup;
     }
 
-    public void setSecurityGroup(SecurityGroupV4Request securityGroup) {
+    public void setSecurityGroup(SecurityGroupV1Request securityGroup) {
         this.securityGroup = securityGroup;
     }
 

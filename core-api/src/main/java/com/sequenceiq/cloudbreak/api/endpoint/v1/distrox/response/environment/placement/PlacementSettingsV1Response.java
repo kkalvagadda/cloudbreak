@@ -14,7 +14,7 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_NULL)
-public class PlacementSettingsV4Response implements JsonEntity {
+public class PlacementSettingsV1Response implements JsonEntity {
 
     @ApiModelProperty(StackModelDescription.AVAILABILITY_ZONE)
     private String availabilityZone;

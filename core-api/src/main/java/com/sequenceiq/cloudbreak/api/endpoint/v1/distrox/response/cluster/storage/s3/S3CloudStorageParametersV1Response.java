@@ -4,7 +4,7 @@ import java.util.Objects;
 
 import javax.validation.constraints.NotNull;
 
-import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.response.cluster.storage.CloudStorageParametersV4Response;
+import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.response.cluster.storage.CloudStorageParametersV1Response;
 import com.sequenceiq.cloudbreak.common.type.filesystem.FileSystemType;
 import com.sequenceiq.cloudbreak.validation.ValidS3CloudStorageParameters;
 
@@ -13,7 +13,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel
 @ValidS3CloudStorageParameters
-public class S3CloudStorageParametersV4Response implements CloudStorageParametersV4Response {
+public class S3CloudStorageParametersV1Response implements CloudStorageParametersV1Response {
 
     @ApiModelProperty
     @NotNull
@@ -38,10 +38,10 @@ public class S3CloudStorageParametersV4Response implements CloudStorageParameter
         if (this == o) {
             return true;
         }
-        if (!(o instanceof S3CloudStorageParametersV4Response)) {
+        if (!(o instanceof S3CloudStorageParametersV1Response)) {
             return false;
         }
-        S3CloudStorageParametersV4Response that = (S3CloudStorageParametersV4Response) o;
+        S3CloudStorageParametersV1Response that = (S3CloudStorageParametersV1Response) o;
         return Objects.equals(instanceProfile, that.instanceProfile);
     }
 

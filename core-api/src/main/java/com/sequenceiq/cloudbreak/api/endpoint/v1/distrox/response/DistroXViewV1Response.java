@@ -14,7 +14,7 @@ import com.sequenceiq.cloudbreak.doc.ModelDescriptions.StackModelDescription;
 import io.swagger.annotations.ApiModelProperty;
 
 @JsonInclude(Include.NON_NULL)
-public class StackViewV4Response implements JsonEntity {
+public class DistroXViewV1Response implements JsonEntity {
 
     @ApiModelProperty(STACK_ID)
     private Long id;

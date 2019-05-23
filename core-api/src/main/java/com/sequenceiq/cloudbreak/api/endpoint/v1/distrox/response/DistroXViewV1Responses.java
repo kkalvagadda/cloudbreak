@@ -5,13 +5,13 @@ import java.util.Set;
 
 import com.sequenceiq.cloudbreak.api.endpoint.v4.common.responses.GeneralCollectionV4Response;
 
-public class StackViewV4Responses extends GeneralCollectionV4Response<StackViewV4Response> {
+public class DistroXViewV1Responses extends GeneralCollectionV4Response<DistroXViewV1Response> {
 
-    public StackViewV4Responses(Set<StackViewV4Response> responses) {
+    public DistroXViewV1Responses(Set<DistroXViewV1Response> responses) {
         super(responses);
     }
 
-    public StackViewV4Responses() {
+    public DistroXViewV1Responses() {
         super(Collections.emptyList());
     }
 }

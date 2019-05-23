@@ -14,7 +14,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class HardwareInfoGroupV4Response implements JsonEntity {
+public class HardwareInfoGroupV1Response implements JsonEntity {
 
     @ApiModelProperty(HostGroupModelDescription.RECOVERY_MODE)
     private RecoveryMode recoveryMode = RecoveryMode.MANUAL;
@@ -22,7 +22,7 @@ public class HardwareInfoGroupV4Response implements JsonEntity {
     private String name;
 
     @ApiModelProperty(HardwareModelDescription.METADATA)
-    private Set<HardwareInfoV4Response> hardwareInfos = new HashSet<>();
+    private Set<HardwareInfoV1Response> hardwareInfos = new HashSet<>();
 
     public RecoveryMode getRecoveryMode() {
         return recoveryMode;
@@ -32,11 +32,11 @@ public class HardwareInfoGroupV4Response implements JsonEntity {
         this.recoveryMode = recoveryMode;
     }
 
-    public Set<HardwareInfoV4Response> getHardwareInfos() {
+    public Set<HardwareInfoV1Response> getHardwareInfos() {
         return hardwareInfos;
     }
 
-    public void setHardwareInfos(Set<HardwareInfoV4Response> hardwareInfos) {
+    public void setHardwareInfos(Set<HardwareInfoV1Response> hardwareInfos) {
         this.hardwareInfos = hardwareInfos;
     }
 

@@ -12,14 +12,14 @@ import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel
 @MutuallyExclusiveNotNull(fieldNames = {"hostGroups", "nodes"}, message = "Either hostGroups or nodes should be provided but not both.")
-public class ClusterRepairV1Request {
+public class DistroXRepairV1Request {
 
     @ApiModelProperty(value = RepairClusterRequest.HOSTGROUPS, required = true)
     private List<String> hostGroups;
 
     @ApiModelProperty(RepairClusterRequest.NODES)
     @Valid
-    private ClusterRepairNodesV1Request nodes;
+    private DistroXRepairNodesV1Request nodes;
 
     @ApiModelProperty(RepairClusterRequest.REMOVE_ONLY)
     private boolean removeOnly;
@@ -40,11 +40,11 @@ public class ClusterRepairV1Request {
         this.removeOnly = removeOnly;
     }
 
-    public ClusterRepairNodesV1Request getNodes() {
+    public DistroXRepairNodesV1Request getNodes() {
         return nodes;
     }
 
-    public void setNodes(ClusterRepairNodesV1Request nodes) {
+    public void setNodes(DistroXRepairNodesV1Request nodes) {
         this.nodes = nodes;
     }
 }

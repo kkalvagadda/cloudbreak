@@ -15,7 +15,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel
 @JsonInclude(Include.NON_NULL)
-public class InstanceMetaDataV4Response implements JsonEntity {
+public class InstanceMetaDataV1Response implements JsonEntity {
 
     @ApiModelProperty(InstanceMetaDataModelDescription.PRIVATE_IP)
     private String privateIp;

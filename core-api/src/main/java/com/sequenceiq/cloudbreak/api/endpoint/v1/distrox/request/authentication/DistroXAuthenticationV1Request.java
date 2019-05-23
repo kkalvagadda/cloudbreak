@@ -10,5 +10,5 @@ import io.swagger.annotations.ApiModel;
 @ApiModel
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_NULL)
-public class StackAuthenticationV1Request extends StackAuthenticationV4Base {
+public class DistroXAuthenticationV1Request extends StackAuthenticationV4Base {
 }

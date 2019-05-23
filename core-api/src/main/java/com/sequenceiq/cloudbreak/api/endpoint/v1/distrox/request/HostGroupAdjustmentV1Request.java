@@ -10,7 +10,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel
-public class HostGroupAdjustmentV4Request implements JsonEntity {
+public class HostGroupAdjustmentV1Request implements JsonEntity {
 
     @NotNull
     @ApiModelProperty(value = HostGroupModelDescription.HOST_GROUP_NAME, required = true)

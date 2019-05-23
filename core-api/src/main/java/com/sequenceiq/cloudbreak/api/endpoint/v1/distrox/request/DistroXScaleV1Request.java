@@ -13,7 +13,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class StackScaleV4Request implements JsonEntity {
+public class DistroXScaleV1Request implements JsonEntity {
 
     @NotNull
     @ApiModelProperty(value = InstanceGroupModelDescription.INSTANCE_GROUP_NAME, required = true)

@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sequenceiq.cloudbreak.api.endpoint.v4.JsonEntity;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CustomContainerV4Request implements JsonEntity {
+public class CustomContainerV1Request implements JsonEntity {
 
     private Map<String, String> definitions = new HashMap<>();
 

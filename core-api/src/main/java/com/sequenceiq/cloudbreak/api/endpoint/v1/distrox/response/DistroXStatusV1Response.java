@@ -4,7 +4,7 @@ import com.sequenceiq.cloudbreak.api.endpoint.v4.common.Status;
 
 import io.swagger.annotations.ApiModelProperty;
 
-public class StackStatusV4Response {
+public class DistroXStatusV1Response {
 
     @ApiModelProperty
     private Long id;

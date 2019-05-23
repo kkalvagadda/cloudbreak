@@ -1,21 +1,20 @@
-package com.sequenceiq.cloudbreak.api.endpoint.v4.stacks.views;
+package com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.views;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.sequenceiq.cloudbreak.api.endpoint.v4.JsonEntity;
 import com.sequenceiq.cloudbreak.api.endpoint.v4.blueprint.responses.BlueprintV4ViewResponse;
-import com.sequenceiq.cloudbreak.api.endpoint.v4.common.CompactViewV4Response;
 import com.sequenceiq.cloudbreak.api.endpoint.v4.common.Status;
-import com.sequenceiq.cloudbreak.api.endpoint.v4.stacks.response.cluster.sharedservice.SharedServiceV4Response;
 import com.sequenceiq.cloudbreak.doc.ModelDescriptions;
 import com.sequenceiq.cloudbreak.doc.ModelDescriptions.ClusterModelDescription;
 
 import io.swagger.annotations.ApiModelProperty;
 
 @JsonInclude(Include.NON_NULL)
-public class ClusterViewV4Response extends CompactViewV4Response {
+public class DistroxViewV1Response implements JsonEntity {
     @ApiModelProperty(ClusterModelDescription.STATUS)
     private Status status;
 
@@ -23,10 +22,7 @@ public class ClusterViewV4Response extends CompactViewV4Response {
     private boolean secure;
 
     @ApiModelProperty(ClusterModelDescription.HOSTGROUPS)
-    private Set<HostGroupViewV4Response> hostGroups = new HashSet<>();
-
-    @ApiModelProperty(ClusterModelDescription.SHARED_SERVICE)
-    private SharedServiceV4Response sharedServiceResponse;
+    private Set<HostGroupViewV1Response> hostGroups = new HashSet<>();
 
     @ApiModelProperty(ClusterModelDescription.KERBEROSCONFIG_NAME)
     private String kerberosName;
@@ -36,6 +32,28 @@ public class ClusterViewV4Response extends CompactViewV4Response {
 
     @ApiModelProperty(ModelDescriptions.StackModelDescription.SERVER_IP)
     private String serverIp;
+
+    @ApiModelProperty(value = ModelDescriptions.NAME)
+    private String name;
+
+    @ApiModelProperty(ModelDescriptions.DESCRIPTION)
+    private String description;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public Status getStatus() {
         return status;
@@ -53,20 +71,12 @@ public class ClusterViewV4Response extends CompactViewV4Response {
         this.secure = secure;
     }
 
-    public Set<HostGroupViewV4Response> getHostGroups() {
+    public Set<HostGroupViewV1Response> getHostGroups() {
         return hostGroups;
     }
 
-    public void setHostGroups(Set<HostGroupViewV4Response> hostGroups) {
+    public void setHostGroups(Set<HostGroupViewV1Response> hostGroups) {
         this.hostGroups = hostGroups;
-    }
-
-    public SharedServiceV4Response getSharedServiceResponse() {
-        return sharedServiceResponse;
-    }
-
-    public void setSharedServiceResponse(SharedServiceV4Response sharedServiceResponse) {
-        this.sharedServiceResponse = sharedServiceResponse;
     }
 
     public String getKerberosName() {

@@ -10,6 +10,6 @@ import io.swagger.annotations.ApiModel;
 @ApiModel
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_NULL)
-public class CustomDomainSettingsV4Response extends CustomDomainSettingsV4Base {
+public class CustomDomainSettingsV1Response extends CustomDomainSettingsV4Base {
 
 }

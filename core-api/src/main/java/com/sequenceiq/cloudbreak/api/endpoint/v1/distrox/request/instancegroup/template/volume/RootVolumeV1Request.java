@@ -13,7 +13,7 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_NULL)
-public class RootVolumeV4Request implements JsonEntity {
+public class RootVolumeV1Request implements JsonEntity {
 
     @ApiModelProperty(value = ROOT_VOLUME_SIZE, required = true)
     private Integer size;

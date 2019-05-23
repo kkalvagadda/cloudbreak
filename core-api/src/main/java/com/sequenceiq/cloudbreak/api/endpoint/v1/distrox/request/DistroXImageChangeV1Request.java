@@ -10,7 +10,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel
-public class StackImageChangeV4Request implements JsonEntity {
+public class DistroXImageChangeV1Request implements JsonEntity {
 
     @ApiModelProperty(value = StackModelDescription.IMAGE_ID, required = true)
     @NotNull

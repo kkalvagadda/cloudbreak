@@ -10,7 +10,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CloudbreakDetailsV4Response implements JsonEntity {
+public class DistroXDetailsV1Response implements JsonEntity {
 
     @ApiModelProperty(CloudbreakDetailsModelDescription.VERSION)
     private String version;

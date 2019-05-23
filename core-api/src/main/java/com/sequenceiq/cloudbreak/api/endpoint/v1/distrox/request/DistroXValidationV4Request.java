@@ -3,8 +3,8 @@ package com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.request;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.request.instancegroup.InstanceGroupV4Request;
-import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.request.network.NetworkV4Request;
+import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.request.instancegroup.InstanceGroupV1Request;
+import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.request.network.NetworkV1Request;
 import com.sequenceiq.cloudbreak.api.endpoint.v4.JsonEntity;
 import com.sequenceiq.cloudbreak.doc.ModelDescriptions.ClusterModelDescription;
 import com.sequenceiq.cloudbreak.doc.ModelDescriptions.StackModelDescription;
@@ -13,13 +13,13 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel
-public class StackValidationV4Request implements JsonEntity {
+public class DistroXValidationV4Request implements JsonEntity {
 
     @ApiModelProperty(value = ClusterModelDescription.HOSTGROUPS, required = true)
-    private Set<HostGroupV4Request> hostGroups = new HashSet<>();
+    private Set<HostGroupV1Request> hostGroups = new HashSet<>();
 
     @ApiModelProperty(value = StackModelDescription.INSTANCE_GROUPS, required = true)
-    private Set<InstanceGroupV4Request> instanceGroups = new HashSet<>();
+    private Set<InstanceGroupV1Request> instanceGroups = new HashSet<>();
 
     @ApiModelProperty(ClusterModelDescription.BLUEPRINT_NAME)
     private String blueprintName;
@@ -28,7 +28,7 @@ public class StackValidationV4Request implements JsonEntity {
     private Long networkId;
 
     @ApiModelProperty(StackModelDescription.NETWORK)
-    private NetworkV4Request network;
+    private NetworkV1Request network;
 
     @ApiModelProperty(StackModelDescription.ENVIRONMENT)
     private String environmentName;
@@ -37,21 +37,21 @@ public class StackValidationV4Request implements JsonEntity {
     private String credentialName;
 
     @ApiModelProperty(StackModelDescription.FILESYSTEM)
-    private FileSystemValidationV4Request fileSystem;
+    private FileSystemValidationV1Request fileSystem;
 
-    public Set<HostGroupV4Request> getHostGroups() {
+    public Set<HostGroupV1Request> getHostGroups() {
         return hostGroups;
     }
 
-    public void setHostGroups(Set<HostGroupV4Request> hostGroups) {
+    public void setHostGroups(Set<HostGroupV1Request> hostGroups) {
         this.hostGroups = hostGroups;
     }
 
-    public Set<InstanceGroupV4Request> getInstanceGroups() {
+    public Set<InstanceGroupV1Request> getInstanceGroups() {
         return instanceGroups;
     }
 
-    public void setInstanceGroups(Set<InstanceGroupV4Request> instanceGroups) {
+    public void setInstanceGroups(Set<InstanceGroupV1Request> instanceGroups) {
         this.instanceGroups = instanceGroups;
     }
 
@@ -71,11 +71,11 @@ public class StackValidationV4Request implements JsonEntity {
         this.networkId = networkId;
     }
 
-    public NetworkV4Request getNetwork() {
+    public NetworkV1Request getNetwork() {
         return network;
     }
 
-    public void setNetwork(NetworkV4Request network) {
+    public void setNetwork(NetworkV1Request network) {
         this.network = network;
     }
 
@@ -95,11 +95,11 @@ public class StackValidationV4Request implements JsonEntity {
         this.credentialName = credentialName;
     }
 
-    public FileSystemValidationV4Request getFileSystem() {
+    public FileSystemValidationV1Request getFileSystem() {
         return fileSystem;
     }
 
-    public void setFileSystem(FileSystemValidationV4Request fileSystem) {
+    public void setFileSystem(FileSystemValidationV1Request fileSystem) {
         this.fileSystem = fileSystem;
     }
 }

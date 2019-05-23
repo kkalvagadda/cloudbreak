@@ -14,7 +14,7 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_NULL)
-public class RepositoryV4Request implements JsonEntity {
+public class RepositoryV1Request implements JsonEntity {
 
     @NotNull
     @ApiModelProperty(value = ClusterManagerRepositoryDescription.VERSION, required = true)

@@ -2,26 +2,26 @@ package com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.request.cluster.cm.rep
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.request.cluster.repository.RepositoryV4Request;
+import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.request.cluster.repository.RepositoryV1Request;
 
 import io.swagger.annotations.ApiModel;
 
 @ApiModel
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ClouderaManagerRepositoryV4Request extends RepositoryV4Request {
+public class ClouderaManagerRepositoryV1Request extends RepositoryV1Request {
 
-    public ClouderaManagerRepositoryV4Request withVersion(String version) {
+    public ClouderaManagerRepositoryV1Request withVersion(String version) {
         setVersion(version);
         return this;
     }
 
-    public ClouderaManagerRepositoryV4Request withBaseUrl(String baseUrl) {
+    public ClouderaManagerRepositoryV1Request withBaseUrl(String baseUrl) {
         setBaseUrl(baseUrl);
         return this;
     }
 
-    public ClouderaManagerRepositoryV4Request withGpgKeyUrl(String gpgKeyUrl) {
+    public ClouderaManagerRepositoryV1Request withGpgKeyUrl(String gpgKeyUrl) {
         setGpgKeyUrl(gpgKeyUrl);
         return this;
     }

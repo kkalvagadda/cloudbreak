@@ -19,7 +19,7 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_NULL)
-public class SecurityGroupV4Request implements JsonEntity {
+public class SecurityGroupV1Request implements JsonEntity {
 
     @ApiModelProperty(SecurityGroupModelDescription.SECURITY_GROUP_IDS)
     private Set<String> securityGroupIds;

@@ -5,7 +5,7 @@ import com.sequenceiq.cloudbreak.api.endpoint.v4.JsonEntity;
 import com.sequenceiq.cloudbreak.common.type.filesystem.FileSystemType;
 
 @JsonIgnoreProperties(ignoreUnknown = true, value = "type")
-public interface CloudStorageParametersV4Response extends JsonEntity {
+public interface CloudStorageParametersV1Response extends JsonEntity {
 
     FileSystemType getType();
 

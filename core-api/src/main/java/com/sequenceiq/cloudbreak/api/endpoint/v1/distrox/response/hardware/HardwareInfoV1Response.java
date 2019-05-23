@@ -5,7 +5,7 @@ import java.util.Map;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.response.instancegroup.template.InstanceTemplateV4Response;
+import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.response.instancegroup.template.InstanceTemplateV1Response;
 import com.sequenceiq.cloudbreak.api.endpoint.v4.JsonEntity;
 import com.sequenceiq.cloudbreak.api.endpoint.v4.stacks.base.InstanceMetadataType;
 import com.sequenceiq.cloudbreak.api.endpoint.v4.stacks.base.InstanceStatus;
@@ -20,7 +20,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class HardwareInfoV4Response implements JsonEntity {
+public class HardwareInfoV1Response implements JsonEntity {
 
     @NotNull
     @ApiModelProperty(value = ModelDescriptions.NAME, required = true)
@@ -75,7 +75,7 @@ public class HardwareInfoV4Response implements JsonEntity {
     private Map<String, String> packageVersions;
 
     @ApiModelProperty(InstanceGroupModelDescription.TEMPLATE)
-    private InstanceTemplateV4Response template;
+    private InstanceTemplateV1Response template;
 
     public String getName() {
         return name;
@@ -173,11 +173,11 @@ public class HardwareInfoV4Response implements JsonEntity {
         this.instanceMetadataType = instanceMetadataType;
     }
 
-    public InstanceTemplateV4Response getTemplate() {
+    public InstanceTemplateV1Response getTemplate() {
         return template;
     }
 
-    public void setTemplate(InstanceTemplateV4Response template) {
+    public void setTemplate(InstanceTemplateV1Response template) {
         this.template = template;
     }
 

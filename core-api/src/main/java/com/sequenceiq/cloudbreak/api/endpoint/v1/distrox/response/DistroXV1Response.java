@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.response.authentication.StackAuthenticationV1Response;
-import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.response.cluster.ClusterV4Response;
+import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.response.cluster.DistroXClusterV1Response;
 import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.response.cluster.sharedservice.SdxV1Response;
 import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.response.customdomain.CustomDomainSettingsV1Response;
 import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.response.environment.EnvironmentSettingsV4Response;
@@ -22,8 +22,8 @@ import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.response.environment.pl
 import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.response.hardware.HardwareInfoGroupV1Response;
 import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.response.image.StackImageV1Response;
 import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.response.instancegroup.InstanceGroupV1Response;
-import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.response.network.NetworkV4Response;
-import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.response.tags.TagsV4Response;
+import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.response.network.NetworkV1Response;
+import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.response.tags.TagsV1Response;
 import com.sequenceiq.cloudbreak.api.endpoint.v4.common.Status;
 import com.sequenceiq.cloudbreak.api.endpoint.v4.events.responses.CloudbreakEventV4Response;
 import com.sequenceiq.cloudbreak.api.endpoint.v4.stacks.base.StackV4Base;
@@ -38,7 +38,7 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_NULL)
-public class StackV4Response extends StackV4Base {
+public class DistroXV1Response extends StackV4Base {
 
     @ApiModelProperty(StackModelDescription.STACK_ID)
     private Long id;
@@ -49,13 +49,13 @@ public class StackV4Response extends StackV4Base {
     private Status status;
 
     @ApiModelProperty(StackModelDescription.CLUSTER)
-    private ClusterV4Response cluster;
+    private DistroXClusterV1Response cluster;
 
     @ApiModelProperty(StackModelDescription.STATUS_REASON)
     private String statusReason;
 
     @ApiModelProperty(StackModelDescription.NETWORK)
-    private NetworkV4Response network;
+    private NetworkV1Response network;
 
     @Valid
     @ApiModelProperty
@@ -74,7 +74,7 @@ public class StackV4Response extends StackV4Base {
     private StackImageV1Response image;
 
     @ApiModelProperty(StackModelDescription.CLOUDBREAK_DETAILS)
-    private CloudbreakDetailsV4Response cloudbreakDetails;
+    private DistroXDetailsV1Response cloudbreakDetails;
 
     @ApiModelProperty(StackModelDescription.AUTHENTICATION)
     private StackAuthenticationV1Response authentication;
@@ -89,7 +89,7 @@ public class StackV4Response extends StackV4Base {
     private List<CloudbreakEventV4Response> cloudbreakEvents = new ArrayList<>();
 
     @ApiModelProperty(StackModelDescription.TAGS)
-    private TagsV4Response tags;
+    private TagsV1Response tags;
 
     @ApiModelProperty(ModelDescriptions.WORKSPACE_OF_THE_RESOURCE)
     private WorkspaceResourceV4Response workspace;
@@ -121,11 +121,11 @@ public class StackV4Response extends StackV4Base {
         this.status = status;
     }
 
-    public ClusterV4Response getCluster() {
+    public DistroXClusterV1Response getCluster() {
         return cluster;
     }
 
-    public void setCluster(ClusterV4Response cluster) {
+    public void setCluster(DistroXClusterV1Response cluster) {
         this.cluster = cluster;
     }
 
@@ -137,11 +137,11 @@ public class StackV4Response extends StackV4Base {
         this.statusReason = statusReason;
     }
 
-    public NetworkV4Response getNetwork() {
+    public NetworkV1Response getNetwork() {
         return network;
     }
 
-    public void setNetwork(NetworkV4Response network) {
+    public void setNetwork(NetworkV1Response network) {
         this.network = network;
     }
 
@@ -185,11 +185,11 @@ public class StackV4Response extends StackV4Base {
         this.image = image;
     }
 
-    public CloudbreakDetailsV4Response getCloudbreakDetails() {
+    public DistroXDetailsV1Response getCloudbreakDetails() {
         return cloudbreakDetails;
     }
 
-    public void setCloudbreakDetails(CloudbreakDetailsV4Response cloudbreakDetails) {
+    public void setCloudbreakDetails(DistroXDetailsV1Response cloudbreakDetails) {
         this.cloudbreakDetails = cloudbreakDetails;
     }
 
@@ -241,11 +241,11 @@ public class StackV4Response extends StackV4Base {
         this.environment = environment;
     }
 
-    public TagsV4Response getTags() {
+    public TagsV1Response getTags() {
         return tags;
     }
 
-    public void setTags(TagsV4Response tags) {
+    public void setTags(TagsV1Response tags) {
         this.tags = tags;
     }
 

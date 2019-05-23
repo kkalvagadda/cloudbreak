@@ -10,7 +10,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class MaintenanceModeV4Request implements JsonEntity {
+public class DistroXMaintenanceModeV1Request implements JsonEntity {
 
     @ApiModelProperty(value = ClusterModelDescription.STATUS_MAINTENANCE_MODE, allowableValues = "ENABLED,VALIDATION_REQUESTED,DISABLED")
     private MaintenanceModeStatus status;

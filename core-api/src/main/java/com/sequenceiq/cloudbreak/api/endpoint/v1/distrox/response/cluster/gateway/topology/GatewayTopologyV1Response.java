@@ -14,7 +14,7 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_NULL)
-public class GatewayTopologyV4Response implements JsonEntity {
+public class GatewayTopologyV1Response implements JsonEntity {
 
     @ApiModelProperty(GatewayModelDescription.KNOX_TOPOLOGY_NAME)
     private String topologyName;

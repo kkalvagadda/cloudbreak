@@ -1,4 +1,4 @@
-package com.sequenceiq.cloudbreak.api.endpoint.v4.stacks.response;
+package com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.response;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;

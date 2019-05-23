@@ -10,6 +10,6 @@ import io.swagger.annotations.ApiModel;
 @ApiModel
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_NULL)
-public class NetworkV4Request extends NetworkV4Base {
+public class NetworkV1Request extends NetworkV4Base {
 
 }

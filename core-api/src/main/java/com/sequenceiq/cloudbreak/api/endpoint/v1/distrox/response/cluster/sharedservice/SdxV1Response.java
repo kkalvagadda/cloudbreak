@@ -10,9 +10,15 @@ import io.swagger.annotations.ApiModel;
 @ApiModel
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_NULL)
-public class SharedServiceV4Response implements JsonEntity {
+public class SdxV1Response implements JsonEntity {
 
     private String sdxCrn;
 
-    
+    public String getSdxCrn() {
+        return sdxCrn;
+    }
+
+    public void setSdxCrn(String sdxCrn) {
+        this.sdxCrn = sdxCrn;
+    }
 }

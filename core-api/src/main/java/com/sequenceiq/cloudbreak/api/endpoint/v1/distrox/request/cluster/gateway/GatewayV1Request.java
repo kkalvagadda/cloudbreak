@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.request.cluster.gateway.topology.GatewayTopologyV4Request;
+import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.request.cluster.gateway.topology.GatewayTopologyV1Request;
 import com.sequenceiq.cloudbreak.api.endpoint.v4.JsonEntity;
 import com.sequenceiq.cloudbreak.api.endpoint.v4.stacks.base.GatewayType;
 import com.sequenceiq.cloudbreak.api.endpoint.v4.stacks.base.SSOType;
@@ -22,14 +22,14 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_NULL)
-public class GatewayV4Request implements JsonEntity {
+public class GatewayV1Request implements JsonEntity {
 
     @JsonIgnore
     @ApiModelProperty(GatewayModelDescription.KNOX_PATH)
     private String path;
 
     @ApiModelProperty(GatewayModelDescription.GATEWAY_TOPOLOGIES)
-    private List<GatewayTopologyV4Request> topologies;
+    private List<GatewayTopologyV1Request> topologies;
 
     @JsonIgnore
     @ApiModelProperty(GatewayModelDescription.KNOX_SSO_PROVIDER)
@@ -54,11 +54,11 @@ public class GatewayV4Request implements JsonEntity {
         this.path = path;
     }
 
-    public List<GatewayTopologyV4Request> getTopologies() {
+    public List<GatewayTopologyV1Request> getTopologies() {
         return topologies;
     }
 
-    public void setTopologies(List<GatewayTopologyV4Request> topologies) {
+    public void setTopologies(List<GatewayTopologyV1Request> topologies) {
         this.topologies = topologies;
     }
 

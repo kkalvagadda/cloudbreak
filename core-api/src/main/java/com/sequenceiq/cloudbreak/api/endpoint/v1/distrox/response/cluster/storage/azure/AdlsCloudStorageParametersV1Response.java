@@ -5,7 +5,7 @@ import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.response.cluster.storage.CloudStorageParametersV4Response;
+import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.response.cluster.storage.CloudStorageParametersV1Response;
 import com.sequenceiq.cloudbreak.common.type.filesystem.FileSystemType;
 import com.sequenceiq.cloudbreak.validation.ValidAdlsCloudStorageParameters;
 
@@ -16,7 +16,7 @@ import io.swagger.annotations.ApiModelProperty;
 @ValidAdlsCloudStorageParameters
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_NULL)
-public class AdlsCloudStorageParametersV4Response implements CloudStorageParametersV4Response {
+public class AdlsCloudStorageParametersV1Response implements CloudStorageParametersV1Response {
 
     @ApiModelProperty
     @NotNull

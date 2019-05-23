@@ -1,4 +1,4 @@
-package com.sequenceiq.cloudbreak.api.endpoint.v4.stacks.response.environment;
+package com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.response.environment;
 
 import static com.sequenceiq.cloudbreak.doc.ModelDescriptions.StackModelDescription.CREDENTIAL_NAME;
 import static com.sequenceiq.cloudbreak.doc.ModelDescriptions.StackModelDescription.ENVIRONMENT;
@@ -18,19 +18,19 @@ import io.swagger.annotations.ApiModelProperty;
 public class EnvironmentSettingsV4Response implements JsonEntity {
 
     @ApiModelProperty(ENVIRONMENT)
-    private String name;
+    private String resourceCrn;
 
     @ApiModelProperty(CREDENTIAL_NAME)
     private CredentialV4Response credential;
 
     private String cloudPlatform;
 
-    public String getName() {
-        return name;
+    public String getResourceCrn() {
+        return resourceCrn;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setResourceCrn(String resourceCrn) {
+        this.resourceCrn = resourceCrn;
     }
 
     public CredentialV4Response getCredential() {

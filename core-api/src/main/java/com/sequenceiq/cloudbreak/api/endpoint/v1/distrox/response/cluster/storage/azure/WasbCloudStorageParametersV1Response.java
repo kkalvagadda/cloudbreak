@@ -4,7 +4,7 @@ import java.util.Objects;
 
 import javax.validation.constraints.NotNull;
 
-import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.response.cluster.storage.CloudStorageParametersV4Response;
+import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.response.cluster.storage.CloudStorageParametersV1Response;
 import com.sequenceiq.cloudbreak.common.type.filesystem.FileSystemType;
 import com.sequenceiq.cloudbreak.validation.ValidWasbCloudStorageParameters;
 
@@ -13,7 +13,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel
 @ValidWasbCloudStorageParameters
-public class WasbCloudStorageParametersV4Response implements CloudStorageParametersV4Response {
+public class WasbCloudStorageParametersV1Response implements CloudStorageParametersV1Response {
 
     @ApiModelProperty
     @NotNull
@@ -60,10 +60,10 @@ public class WasbCloudStorageParametersV4Response implements CloudStorageParamet
         if (this == o) {
             return true;
         }
-        if (!(o instanceof WasbCloudStorageParametersV4Response)) {
+        if (!(o instanceof WasbCloudStorageParametersV1Response)) {
             return false;
         }
-        WasbCloudStorageParametersV4Response that = (WasbCloudStorageParametersV4Response) o;
+        WasbCloudStorageParametersV1Response that = (WasbCloudStorageParametersV1Response) o;
         return isSecure().booleanValue() == that.isSecure().booleanValue()
                 && Objects.equals(accountKey, that.accountKey)
                 && Objects.equals(accountName, that.accountName);

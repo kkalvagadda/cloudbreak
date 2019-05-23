@@ -15,7 +15,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class HostGroupV4Request extends HostGroupV4Base {
+public class HostGroupV1Request extends HostGroupV4Base {
 
     @ApiModelProperty(HostGroupModelDescription.RECIPES)
     private Set<RecipeV4Request> recipes = new HashSet<>();

@@ -13,17 +13,17 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_NULL)
-public class SharedServiceV4Request implements JsonEntity {
+public class SdxV1Request implements JsonEntity {
 
     @ApiModelProperty(required = true)
     @NotEmpty
-    private String datalakeName;
+    private String name;
 
-    public String getDatalakeName() {
-        return datalakeName;
+    public String getName() {
+        return name;
     }
 
-    public void setDatalakeName(String datalakeName) {
-        this.datalakeName = datalakeName;
+    public void setName(String name) {
+        this.name = name;
     }
 }

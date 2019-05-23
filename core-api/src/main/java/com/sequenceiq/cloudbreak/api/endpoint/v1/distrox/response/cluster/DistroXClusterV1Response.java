@@ -2,27 +2,19 @@ package com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.response.cluster;
 
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.response.cluster.ambari.AmbariV4Response;
 import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.response.cluster.clouderamanager.ClouderaManagerV1Response;
-import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.response.cluster.customcontainer.CustomContainerV4Response;
 import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.response.cluster.gateway.GatewayV1Response;
 import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.response.cluster.gateway.topology.ClusterExposedServiceV1Response;
 import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.response.cluster.storage.CloudStorageV1Response;
 import com.sequenceiq.cloudbreak.api.endpoint.v4.JsonEntity;
 import com.sequenceiq.cloudbreak.api.endpoint.v4.blueprint.responses.BlueprintV4Response;
 import com.sequenceiq.cloudbreak.api.endpoint.v4.common.Status;
-import com.sequenceiq.cloudbreak.api.endpoint.v4.database.responses.DatabaseV4Response;
-import com.sequenceiq.cloudbreak.api.endpoint.v4.kerberos.responses.KerberosV4Response;
-import com.sequenceiq.cloudbreak.api.endpoint.v4.ldaps.responses.LdapV4Response;
-import com.sequenceiq.cloudbreak.api.endpoint.v4.proxies.responses.ProxyV4Response;
-import com.sequenceiq.cloudbreak.api.endpoint.v4.workspace.responses.WorkspaceResourceV4Response;
 import com.sequenceiq.cloudbreak.doc.ModelDescriptions;
 import com.sequenceiq.cloudbreak.doc.ModelDescriptions.BlueprintModelDescription;
 import com.sequenceiq.cloudbreak.doc.ModelDescriptions.ClusterModelDescription;
@@ -34,10 +26,7 @@ import com.sequenceiq.cloudbreak.structuredevent.json.Base64Serializer;
 import io.swagger.annotations.ApiModelProperty;
 
 @JsonInclude(Include.NON_NULL)
-public class ClusterV4Response implements JsonEntity {
-
-    @ApiModelProperty(ModelDescriptions.ID)
-    private Long id;
+public class DistroXClusterV1Response implements JsonEntity {
 
     @ApiModelProperty(ModelDescriptions.NAME)
     private String name;
@@ -57,14 +46,14 @@ public class ClusterV4Response implements JsonEntity {
     @ApiModelProperty(ClusterModelDescription.STATUS_REASON)
     private String statusReason;
 
-    @ApiModelProperty(ClusterModelDescription.LDAP_CONFIG)
-    private LdapV4Response ldap;
-
-    @ApiModelProperty(ClusterModelDescription.DATABASES)
-    private List<DatabaseV4Response> databases;
-
-    @ApiModelProperty(ClusterModelDescription.PROXY_NAME)
-    private ProxyV4Response proxy;
+//    @ApiModelProperty(ClusterModelDescription.LDAP_CONFIG)
+//    private LdapV4Response ldap;
+//
+//    @ApiModelProperty(ClusterModelDescription.DATABASES)
+//    private List<DatabaseV4Response> databases;
+//
+//    @ApiModelProperty(ClusterModelDescription.PROXY_NAME)
+//    private ProxyV4Response proxy;
 
     @ApiModelProperty(ClusterModelDescription.FILESYSTEM)
     private CloudStorageV1Response cloudStorage;
@@ -76,26 +65,20 @@ public class ClusterV4Response implements JsonEntity {
     @ApiModelProperty(ClusterModelDescription.CLUSTER_ATTRIBUTES)
     private Map<String, Object> attributes = new HashMap<>();
 
-    @ApiModelProperty(ClusterModelDescription.CUSTOM_CONTAINERS)
-    private CustomContainerV4Response customContainers;
-
-    @ApiModelProperty(ClusterModelDescription.CUSTOM_QUEUE)
-    private String customQueue;
-
     @ApiModelProperty(ClusterModelDescription.CREATION_FINISHED)
     private Long creationFinished;
 
     @ApiModelProperty(ClusterModelDescription.UPTIME)
     private Long uptime;
 
-    @ApiModelProperty
-    private KerberosV4Response kerberos;
+    //@ApiModelProperty
+    //private KerberosV4Response kerberos;
 
     @ApiModelProperty(ClusterModelDescription.CLUSTER_EXPOSED_SERVICES)
     private Map<String, Collection<ClusterExposedServiceV1Response>> exposedServices;
 
-    @ApiModelProperty(ModelDescriptions.WORKSPACE_OF_THE_RESOURCE)
-    private WorkspaceResourceV4Response workspace;
+//    @ApiModelProperty(ModelDescriptions.WORKSPACE_OF_THE_RESOURCE)
+//    private WorkspaceResourceV4Response workspace;
 
     @ApiModelProperty(StackModelDescription.CM_MANAGEMENT_USERNAME)
     private SecretResponse cmMgmtUser;
@@ -104,26 +87,18 @@ public class ClusterV4Response implements JsonEntity {
     private SecretResponse cmMgmtPassword;
 
     @ApiModelProperty(ClusterModelDescription.BLUEPRINT)
-    private BlueprintV4Response blueprint;
+    private BlueprintV4Response cmTemplate;
 
     @ApiModelProperty(BlueprintModelDescription.BLUEPRINT)
     @JsonSerialize(using = Base64Serializer.class)
     @JsonDeserialize(using = Base64Deserializer.class)
-    private String extendedBlueprintText;
+    private String extendedCmTemplateText;
 
     @ApiModelProperty(StackModelDescription.SERVER_IP)
     private String serverIp;
 
     @ApiModelProperty(StackModelDescription.SERVER_URL)
     private String serverUrl;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -172,14 +147,14 @@ public class ClusterV4Response implements JsonEntity {
     public void setStatusReason(String statusReason) {
         this.statusReason = statusReason;
     }
-
-    public LdapV4Response getLdap() {
-        return ldap;
-    }
-
-    public void setLdap(LdapV4Response ldap) {
-        this.ldap = ldap;
-    }
+//
+//    public LdapV4Response getLdap() {
+//        return ldap;
+//    }
+//
+//    public void setLdap(LdapV4Response ldap) {
+//        this.ldap = ldap;
+//    }
 
     public CloudStorageV1Response getCloudStorage() {
         return cloudStorage;
@@ -187,14 +162,6 @@ public class ClusterV4Response implements JsonEntity {
 
     public void setCloudStorage(CloudStorageV1Response cloudStorage) {
         this.cloudStorage = cloudStorage;
-    }
-
-    public AmbariV4Response getAmbari() {
-        return ambari;
-    }
-
-    public void setAmbari(AmbariV4Response ambari) {
-        this.ambari = ambari;
     }
 
     public ClouderaManagerV1Response getCm() {
@@ -219,14 +186,6 @@ public class ClusterV4Response implements JsonEntity {
 
     public void setAttributes(Map<String, Object> attributes) {
         this.attributes = attributes;
-    }
-
-    public String getCustomQueue() {
-        return customQueue;
-    }
-
-    public void setCustomQueue(String customQueue) {
-        this.customQueue = customQueue;
     }
 
     public Long getCreationFinished() {
@@ -261,45 +220,45 @@ public class ClusterV4Response implements JsonEntity {
         this.cmMgmtPassword = cmMgmtPassword;
     }
 
-    public WorkspaceResourceV4Response getWorkspace() {
-        return workspace;
-    }
-
-    public void setWorkspace(WorkspaceResourceV4Response workspace) {
-        this.workspace = workspace;
-    }
-
-    public List<DatabaseV4Response> getDatabases() {
-        return databases;
-    }
-
-    public void setDatabases(List<DatabaseV4Response> databases) {
-        this.databases = databases;
-    }
-
-    public ProxyV4Response getProxy() {
-        return proxy;
-    }
-
-    public void setProxy(ProxyV4Response proxy) {
-        this.proxy = proxy;
-    }
-
-    public CustomContainerV4Response getCustomContainers() {
-        return customContainers;
-    }
-
-    public void setCustomContainers(CustomContainerV4Response customContainers) {
-        this.customContainers = customContainers;
-    }
-
-    public KerberosV4Response getKerberos() {
-        return kerberos;
-    }
-
-    public void setKerberos(KerberosV4Response kerberos) {
-        this.kerberos = kerberos;
-    }
+//    public WorkspaceResourceV4Response getWorkspace() {
+//        return workspace;
+//    }
+//
+//    public void setWorkspace(WorkspaceResourceV4Response workspace) {
+//        this.workspace = workspace;
+//    }
+//
+//    public List<DatabaseV4Response> getDatabases() {
+//        return databases;
+//    }
+//
+//    public void setDatabases(List<DatabaseV4Response> databases) {
+//        this.databases = databases;
+//    }
+//
+//    public ProxyV4Response getProxy() {
+//        return proxy;
+//    }
+//
+//    public void setProxy(ProxyV4Response proxy) {
+//        this.proxy = proxy;
+//    }
+//
+//    public CustomContainerV4Response getCustomContainers() {
+//        return customContainers;
+//    }
+//
+//    public void setCustomContainers(CustomContainerV4Response customContainers) {
+//        this.customContainers = customContainers;
+//    }
+//
+//    public KerberosV4Response getKerberos() {
+//        return kerberos;
+//    }
+//
+//    public void setKerberos(KerberosV4Response kerberos) {
+//        this.kerberos = kerberos;
+//    }
 
     public Map<String, Collection<ClusterExposedServiceV1Response>> getExposedServices() {
         return exposedServices;
@@ -309,20 +268,20 @@ public class ClusterV4Response implements JsonEntity {
         this.exposedServices = exposedServices;
     }
 
-    public BlueprintV4Response getBlueprint() {
-        return blueprint;
+    public BlueprintV4Response getCmTemplate() {
+        return cmTemplate;
     }
 
-    public void setBlueprint(BlueprintV4Response blueprint) {
-        this.blueprint = blueprint;
+    public void setCmTemplate(BlueprintV4Response cmTemplate) {
+        this.cmTemplate = cmTemplate;
     }
 
-    public String getExtendedBlueprintText() {
-        return extendedBlueprintText;
+    public String getExtendedCmTemplateText() {
+        return extendedCmTemplateText;
     }
 
-    public void setExtendedBlueprintText(String extendedBlueprintText) {
-        this.extendedBlueprintText = extendedBlueprintText;
+    public void setExtendedCmTemplateText(String extendedCmTemplateText) {
+        this.extendedCmTemplateText = extendedCmTemplateText;
     }
 
     public String getServerIp() {

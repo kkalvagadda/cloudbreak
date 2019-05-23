@@ -1,10 +1,10 @@
-package com.sequenceiq.cloudbreak.api.endpoint.v4.stacks.response.cluster.storage.azure;
+package com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.response.cluster.storage.azure;
 
 import java.util.Objects;
 
 import javax.validation.constraints.NotNull;
 
-import com.sequenceiq.cloudbreak.api.endpoint.v4.stacks.response.cluster.storage.CloudStorageParametersV4Response;
+import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.response.cluster.storage.CloudStorageParametersV1Response;
 import com.sequenceiq.cloudbreak.common.type.filesystem.FileSystemType;
 import com.sequenceiq.cloudbreak.validation.ValidAdlsGen2CloudStorageParameters;
 
@@ -13,7 +13,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel
 @ValidAdlsGen2CloudStorageParameters
-public class AdlsGen2CloudStorageParametersV4Response implements CloudStorageParametersV4Response {
+public class AdlsGen2CloudStorageParametersV4Response implements CloudStorageParametersV1Response {
 
     @ApiModelProperty
     @NotNull

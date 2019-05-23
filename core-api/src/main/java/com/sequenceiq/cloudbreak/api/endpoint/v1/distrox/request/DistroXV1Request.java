@@ -8,24 +8,21 @@ import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.request.authentication.StackAuthenticationV1Request;
-import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.request.cluster.ClusterV4Request;
-import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.request.cluster.sharedservice.SharedServiceV4Request;
-import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.request.customdomain.CustomDomainSettingsV4Request;
-import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.request.environment.EnvironmentSettingsV4Request;
-import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.request.environment.placement.PlacementSettingsV4Request;
-import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.request.image.ImageSettingsV4Request;
-import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.request.instancegroup.InstanceGroupV4Request;
-import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.request.network.NetworkV4Request;
+import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.request.authentication.DistroXAuthenticationV1Request;
+import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.request.cluster.DistroXClusterV1Request;
+import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.request.cluster.sharedservice.SdxV1Request;
+import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.request.customdomain.CustomDomainSettingsV1Request;
+import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.request.environment.EnvironmentSettingsV1Request;
+import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.request.environment.placement.PlacementSettingsV1Request;
+import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.request.image.ImageSettingsV1Request;
+import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.request.instancegroup.InstanceGroupV1Request;
+import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.request.network.NetworkV1Request;
 import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.request.tags.TagsV1Request;
-import com.sequenceiq.cloudbreak.api.endpoint.v4.common.StackType;
 import com.sequenceiq.cloudbreak.api.endpoint.v4.stacks.base.StackV4Base;
 import com.sequenceiq.cloudbreak.doc.ModelDescriptions.ClusterModelDescription;
 import com.sequenceiq.cloudbreak.doc.ModelDescriptions.StackModelDescription;
@@ -36,69 +33,62 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_NULL)
-public class StackV4Request extends StackV4Base {
+public class DistroXV1Request extends StackV4Base {
 
     @Valid
     @NotNull
     @ApiModelProperty(value = StackModelDescription.GENERAL_SETTINGS, required = true)
-    private EnvironmentSettingsV4Request environment;
+    private EnvironmentSettingsV1Request environment;
 
     @ApiModelProperty(StackModelDescription.CUSTOM_DOMAIN_SETTINGS)
-    private CustomDomainSettingsV4Request customDomain;
+    private CustomDomainSettingsV1Request customDomain;
 
     @ApiModelProperty(StackModelDescription.TAGS)
     private TagsV1Request tags;
 
     @Valid
     @ApiModelProperty(PLACEMENT_SETTINGS)
-    private PlacementSettingsV4Request placement;
+    private PlacementSettingsV1Request placement;
 
     @NotNull
     @Valid
     @ApiModelProperty(value = StackModelDescription.INSTANCE_GROUPS, required = true)
-    private List<InstanceGroupV4Request> instanceGroups = new ArrayList<>();
+    private List<InstanceGroupV1Request> instanceGroups = new ArrayList<>();
 
     @NotNull(message = "You should define authentication for stack!")
     @ApiModelProperty(StackModelDescription.AUTHENTICATION)
-    private StackAuthenticationV1Request authentication;
+    private DistroXAuthenticationV1Request authentication;
 
     @Valid
     @ApiModelProperty(StackModelDescription.NETWORK)
-    private NetworkV4Request network;
+    private NetworkV1Request network;
 
     @ApiModelProperty(StackModelDescription.IMAGE_SETTINGS)
-    private ImageSettingsV4Request image;
+    private ImageSettingsV1Request image;
 
     @Valid
     @ApiModelProperty(StackModelDescription.CLUSTER_REQUEST)
-    private ClusterV4Request cluster;
-
-    @ApiModelProperty(value = StackModelDescription.GATEWAY_PORT, allowableValues = "1025-65535")
-    @Min(value = 1025, message = "Port should be between 1025 and 65535")
-    @Max(value = 65535, message = "Port should be between 1025 and 65535")
-    private Integer gatewayPort;
-
-    private StackType type;
+    private DistroXClusterV1Request cluster;
 
     @ApiModelProperty(ClusterModelDescription.SHARED_SERVICE_REQUEST)
-    private SharedServiceV4Request sharedService;
+    private SdxV1Request sdxService;
 
     @ApiModelProperty(StackModelDescription.INPUTS)
     private Map<String, Object> inputs = new HashMap<>();
 
-    public EnvironmentSettingsV4Request getEnvironment() {
+    public EnvironmentSettingsV1Request getEnvironment() {
         return environment;
     }
 
-    public void setEnvironment(EnvironmentSettingsV4Request environment) {
+    public void setEnvironment(EnvironmentSettingsV1Request environment) {
         this.environment = environment;
     }
 
-    public CustomDomainSettingsV4Request getCustomDomain() {
+    public CustomDomainSettingsV1Request getCustomDomain() {
         return customDomain;
     }
 
-    public void setCustomDomain(CustomDomainSettingsV4Request customDomain) {
+    public void setCustomDomain(CustomDomainSettingsV1Request customDomain) {
         this.customDomain = customDomain;
     }
 
@@ -110,76 +100,52 @@ public class StackV4Request extends StackV4Base {
         this.tags = tags;
     }
 
-    public List<InstanceGroupV4Request> getInstanceGroups() {
+    public List<InstanceGroupV1Request> getInstanceGroups() {
         return instanceGroups;
     }
 
-    public void setInstanceGroups(List<InstanceGroupV4Request> instanceGroups) {
+    public void setInstanceGroups(List<InstanceGroupV1Request> instanceGroups) {
         this.instanceGroups = instanceGroups;
     }
 
-    public StackAuthenticationV1Request getAuthentication() {
+    public DistroXAuthenticationV1Request getAuthentication() {
         return authentication;
     }
 
-    public void setAuthentication(StackAuthenticationV1Request authentication) {
+    public void setAuthentication(DistroXAuthenticationV1Request authentication) {
         this.authentication = authentication;
     }
 
-    public NetworkV4Request getNetwork() {
+    public NetworkV1Request getNetwork() {
         return network;
     }
 
-    public void setNetwork(NetworkV4Request network) {
+    public void setNetwork(NetworkV1Request network) {
         this.network = network;
     }
 
-    public ImageSettingsV4Request getImage() {
+    public ImageSettingsV1Request getImage() {
         return image;
     }
 
-    public void setImage(ImageSettingsV4Request image) {
+    public void setImage(ImageSettingsV1Request image) {
         this.image = image;
     }
 
-    public ClusterV4Request getCluster() {
+    public DistroXClusterV1Request getCluster() {
         return cluster;
     }
 
-    public void setCluster(ClusterV4Request cluster) {
+    public void setCluster(DistroXClusterV1Request cluster) {
         this.cluster = cluster;
     }
 
-    public Integer getGatewayPort() {
-        return gatewayPort;
-    }
-
-    public void setGatewayPort(Integer gatewayPort) {
-        this.gatewayPort = gatewayPort;
-    }
-
-    public StackType getType() {
-        return type;
-    }
-
-    public void setType(StackType type) {
-        this.type = type;
-    }
-
-    public PlacementSettingsV4Request getPlacement() {
+    public PlacementSettingsV1Request getPlacement() {
         return placement;
     }
 
-    public void setPlacement(PlacementSettingsV4Request placement) {
+    public void setPlacement(PlacementSettingsV1Request placement) {
         this.placement = placement;
-    }
-
-    public SharedServiceV4Request getSharedService() {
-        return sharedService;
-    }
-
-    public void setSharedService(SharedServiceV4Request sharedService) {
-        this.sharedService = sharedService;
     }
 
     public Map<String, Object> getInputs() {
@@ -188,5 +154,13 @@ public class StackV4Request extends StackV4Base {
 
     public void setInputs(Map<String, Object> inputs) {
         this.inputs = inputs;
+    }
+
+    public SdxV1Request getSdxService() {
+        return sdxService;
+    }
+
+    public void setSdxService(SdxV1Request sdxService) {
+        this.sdxService = sdxService;
     }
 }

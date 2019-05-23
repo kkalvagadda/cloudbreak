@@ -8,7 +8,7 @@ import com.sequenceiq.cloudbreak.doc.ModelDescriptions.StackModelDescription;
 
 import io.swagger.annotations.ApiModelProperty;
 
-public class TagsV4Response implements JsonEntity {
+public class TagsV1Response implements JsonEntity {
 
     @ApiModelProperty(StackModelDescription.APPLICATION_TAGS)
     private Map<String, String> applicationTags = new HashMap<>();

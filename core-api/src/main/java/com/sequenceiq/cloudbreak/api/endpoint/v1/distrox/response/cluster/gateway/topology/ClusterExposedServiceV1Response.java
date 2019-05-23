@@ -3,7 +3,7 @@ package com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.response.cluster.gatew
 import com.sequenceiq.cloudbreak.api.endpoint.v4.JsonEntity;
 import com.sequenceiq.cloudbreak.api.endpoint.v4.stacks.base.SSOType;
 
-public class ClusterExposedServiceV4Response implements JsonEntity {
+public class ClusterExposedServiceV1Response implements JsonEntity {
 
     private String serviceName;
 

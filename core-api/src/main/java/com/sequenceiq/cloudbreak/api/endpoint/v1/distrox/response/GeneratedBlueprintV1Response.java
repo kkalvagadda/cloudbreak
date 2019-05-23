@@ -11,7 +11,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel
-public class GeneratedBlueprintV4Response implements JsonEntity {
+public class GeneratedBlueprintV1Response implements JsonEntity {
 
     @ApiModelProperty(BlueprintModelDescription.BLUEPRINT)
     @JsonSerialize(using = Base64Serializer.class)

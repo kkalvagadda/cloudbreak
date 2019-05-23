@@ -1,6 +1,5 @@
 package com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.request.environment;
 
-import static com.sequenceiq.cloudbreak.doc.ModelDescriptions.StackModelDescription.CREDENTIAL_NAME;
 import static com.sequenceiq.cloudbreak.doc.ModelDescriptions.StackModelDescription.ENVIRONMENT;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -16,13 +15,10 @@ import io.swagger.annotations.ApiModelProperty;
 @ValidEnvironmentSettings
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_NULL)
-public class EnvironmentSettingsV4Request implements JsonEntity {
+public class EnvironmentSettingsV1Request implements JsonEntity {
 
     @ApiModelProperty(ENVIRONMENT)
     private String name;
-
-    @ApiModelProperty(CREDENTIAL_NAME)
-    private String credentialName;
 
     public String getName() {
         return name;
@@ -30,13 +26,5 @@ public class EnvironmentSettingsV4Request implements JsonEntity {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getCredentialName() {
-        return credentialName;
-    }
-
-    public void setCredentialName(String credentialName) {
-        this.credentialName = credentialName;
     }
 }

@@ -7,7 +7,7 @@ import io.swagger.annotations.ApiModel;
 
 @ApiModel
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UserViewV4Response implements JsonEntity {
+public class UserViewV1Response implements JsonEntity {
 
     private String userName;
 

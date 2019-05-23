@@ -10,7 +10,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel
-public class UserNamePasswordV4Request implements JsonEntity {
+public class DistroXUserNamePasswordV1Request implements JsonEntity {
 
     @NotNull
     @Size(min = 1, message = "The length of the name has to be greater than 1")

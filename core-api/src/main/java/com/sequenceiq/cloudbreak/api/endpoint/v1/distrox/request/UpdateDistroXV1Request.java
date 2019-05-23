@@ -6,7 +6,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.request.cluster.ambari.stackrepository.StackRepositoryV4Request;
+import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.request.cluster.repository.RepositoryV1Request;
 import com.sequenceiq.cloudbreak.api.endpoint.v4.JsonEntity;
 import com.sequenceiq.cloudbreak.api.endpoint.v4.stacks.base.StatusRequest;
 import com.sequenceiq.cloudbreak.api.model.annotations.TransformGetterType;
@@ -18,7 +18,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UpdateDistroXV4Request implements JsonEntity {
+public class UpdateDistroXV1Request implements JsonEntity {
 
     @ApiModelProperty(ClusterModelDescription.HOSTGROUP_ADJUSTMENT)
     private HostGroupAdjustmentV1Request hostGroupAdjustment;
@@ -27,7 +27,7 @@ public class UpdateDistroXV4Request implements JsonEntity {
     private StatusRequest status;
 
     @ApiModelProperty(ClusterModelDescription.USERNAME_PASSWORD)
-    private UserNamePasswordV4Request userNamePassword;
+    private DistroXUserNamePasswordV1Request userNamePassword;
 
     @ApiModelProperty(ClusterModelDescription.BLUEPRINT_ID)
     private String blueprintName;
@@ -41,7 +41,7 @@ public class UpdateDistroXV4Request implements JsonEntity {
 
     @Valid
     @ApiModelProperty(ClusterModelDescription.AMBARI_STACK_DETAILS)
-    private StackRepositoryV4Request stackRepository;
+    private RepositoryV1Request repository;
 
     @ApiModelProperty(StackModelDescription.KERBEROS_PASSWORD)
     @Size(max = 50, min = 5, message = "The length of the Kerberos password has to be in range of 5 to 50")
@@ -66,11 +66,11 @@ public class UpdateDistroXV4Request implements JsonEntity {
         this.status = status;
     }
 
-    public UserNamePasswordV4Request getUserNamePassword() {
+    public DistroXUserNamePasswordV1Request getUserNamePassword() {
         return userNamePassword;
     }
 
-    public void setUserNamePassword(UserNamePasswordV4Request userNamePassword) {
+    public void setUserNamePassword(DistroXUserNamePasswordV1Request userNamePassword) {
         this.userNamePassword = userNamePassword;
     }
 
@@ -98,14 +98,6 @@ public class UpdateDistroXV4Request implements JsonEntity {
         this.hostgroups = hostgroups;
     }
 
-    public StackRepositoryV4Request getStackRepository() {
-        return stackRepository;
-    }
-
-    public void setStackRepository(StackRepositoryV4Request stackRepository) {
-        this.stackRepository = stackRepository;
-    }
-
     public String getKerberosPassword() {
         return kerberosPassword;
     }
@@ -120,5 +112,13 @@ public class UpdateDistroXV4Request implements JsonEntity {
 
     public void setKerberosPrincipal(String kerberosPrincipal) {
         this.kerberosPrincipal = kerberosPrincipal;
+    }
+
+    public RepositoryV1Request getRepository() {
+        return repository;
+    }
+
+    public void setRepository(RepositoryV1Request repository) {
+        this.repository = repository;
     }
 }

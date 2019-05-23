@@ -13,7 +13,7 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ClouderaManagerProductV4Response implements JsonEntity {
+public class ClouderaManagerProductV1Response implements JsonEntity {
 
     @NotNull
     @ApiModelProperty(ModelDescriptions.ClouderaManagerProductDescription.NAME)
@@ -49,17 +49,17 @@ public class ClouderaManagerProductV4Response implements JsonEntity {
         this.parcel = parcel;
     }
 
-    public ClouderaManagerProductV4Response withName(String name) {
+    public ClouderaManagerProductV1Response withName(String name) {
         setName(name);
         return this;
     }
 
-    public ClouderaManagerProductV4Response withVersion(String version) {
+    public ClouderaManagerProductV1Response withVersion(String version) {
         setVersion(version);
         return this;
     }
 
-    public ClouderaManagerProductV4Response withParcel(String parcel) {
+    public ClouderaManagerProductV1Response withParcel(String parcel) {
         setParcel(parcel);
         return this;
     }

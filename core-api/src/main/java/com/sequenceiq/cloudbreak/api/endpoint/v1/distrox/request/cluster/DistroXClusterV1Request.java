@@ -11,13 +11,10 @@ import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.request.cluster.ambari.AmbariV4Request;
 import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.request.cluster.cm.ClouderaManagerV1Request;
-import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.request.cluster.customcontainer.CustomContainerV1Request;
 import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.request.cluster.gateway.GatewayV1Request;
-import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.request.cluster.storage.CloudStorageV4Request;
+import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.request.cluster.storage.CloudStorageV1Request;
 import com.sequenceiq.cloudbreak.api.endpoint.v4.JsonEntity;
-import com.sequenceiq.cloudbreak.api.endpoint.v4.common.ExecutorType;
 import com.sequenceiq.cloudbreak.doc.ModelDescriptions.ClusterModelDescription;
 import com.sequenceiq.cloudbreak.doc.ModelDescriptions.StackModelDescription;
 
@@ -27,7 +24,7 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_NULL)
-public class ClusterV4Request implements JsonEntity {
+public class DistroXClusterV1Request implements JsonEntity {
 
     @ApiModelProperty(hidden = true)
     private String name;
@@ -49,45 +46,26 @@ public class ClusterV4Request implements JsonEntity {
     private String password;
 
     @ApiModelProperty(ClusterModelDescription.LDAP_CONFIG_NAME)
-    private String ldapName;
+    private String freeIpa;
 
     @ApiModelProperty(ClusterModelDescription.RDSCONFIG_NAMES)
     private Set<String> databases = new HashSet<>();
 
     @ApiModelProperty(ClusterModelDescription.PROXY_NAME)
-    private String proxyName;
+    private String proxy;
 
     @Valid
     @ApiModelProperty(StackModelDescription.CLOUD_STORAGE)
-    private CloudStorageV4Request cloudStorage;
+    private CloudStorageV1Request cloudStorage;
 
     @Valid
     @ApiModelProperty(ClusterModelDescription.CM_REQUEST)
     private ClouderaManagerV1Request cm;
 
-    @Valid
-    @ApiModelProperty(ClusterModelDescription.AMBARI_REQUEST)
-    private AmbariV4Request ambari;
-
     private GatewayV1Request gateway;
-
-    @Valid
-    private String kerberosName;
-
-    @ApiModelProperty(ClusterModelDescription.CUSTOM_CONTAINERS)
-    private CustomContainerV1Request customContainer;
-
-    @ApiModelProperty(ClusterModelDescription.CUSTOM_QUEUE)
-    private String customQueue;
-
-    @ApiModelProperty(ClusterModelDescription.EXECUTOR_TYPE)
-    private ExecutorType executorType = ExecutorType.DEFAULT;
 
     @ApiModelProperty(ClusterModelDescription.BLUEPRINT_NAME)
     private String blueprintName;
-
-    @ApiModelProperty(ClusterModelDescription.VALIDATE_BLUEPRINT)
-    private Boolean validateBlueprint = Boolean.TRUE;
 
     public String getUserName() {
         return userName;
@@ -103,14 +81,6 @@ public class ClusterV4Request implements JsonEntity {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public ExecutorType getExecutorType() {
-        return executorType;
-    }
-
-    public void setExecutorType(ExecutorType executorType) {
-        this.executorType = executorType;
     }
 
     public String getName() {
@@ -129,19 +99,11 @@ public class ClusterV4Request implements JsonEntity {
         this.databases = databases;
     }
 
-    public String getProxyName() {
-        return proxyName;
-    }
-
-    public void setProxyName(String proxyName) {
-        this.proxyName = proxyName;
-    }
-
-    public CloudStorageV4Request getCloudStorage() {
+    public CloudStorageV1Request getCloudStorage() {
         return cloudStorage;
     }
 
-    public void setCloudStorage(CloudStorageV4Request cloudStorage) {
+    public void setCloudStorage(CloudStorageV1Request cloudStorage) {
         this.cloudStorage = cloudStorage;
     }
 
@@ -153,52 +115,12 @@ public class ClusterV4Request implements JsonEntity {
         this.cm = cm;
     }
 
-    public AmbariV4Request getAmbari() {
-        return ambari;
-    }
-
-    public void setAmbari(AmbariV4Request ambari) {
-        this.ambari = ambari;
-    }
-
     public GatewayV1Request getGateway() {
         return gateway;
     }
 
     public void setGateway(GatewayV1Request gateway) {
         this.gateway = gateway;
-    }
-
-    public String getLdapName() {
-        return ldapName;
-    }
-
-    public void setLdapName(String ldapName) {
-        this.ldapName = ldapName;
-    }
-
-    public String getKerberosName() {
-        return kerberosName;
-    }
-
-    public void setKerberosName(String kerberosName) {
-        this.kerberosName = kerberosName;
-    }
-
-    public String getCustomQueue() {
-        return customQueue;
-    }
-
-    public void setCustomQueue(String customQueue) {
-        this.customQueue = customQueue;
-    }
-
-    public CustomContainerV1Request getCustomContainer() {
-        return customContainer;
-    }
-
-    public void setCustomContainer(CustomContainerV1Request customContainer) {
-        this.customContainer = customContainer;
     }
 
     public String getBlueprintName() {
@@ -209,12 +131,19 @@ public class ClusterV4Request implements JsonEntity {
         this.blueprintName = blueprintName;
     }
 
-    public Boolean getValidateBlueprint() {
-        return validateBlueprint;
+    public String getFreeIpa() {
+        return freeIpa;
     }
 
-    public void setValidateBlueprint(Boolean validateBlueprint) {
-        this.validateBlueprint = validateBlueprint;
+    public void setFreeIpa(String freeIpa) {
+        this.freeIpa = freeIpa;
     }
 
+    public String getProxy() {
+        return proxy;
+    }
+
+    public void setProxy(String proxy) {
+        this.proxy = proxy;
+    }
 }

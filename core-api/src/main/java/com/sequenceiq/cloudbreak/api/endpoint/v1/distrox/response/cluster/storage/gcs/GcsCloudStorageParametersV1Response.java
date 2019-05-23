@@ -4,7 +4,7 @@ import java.util.Objects;
 
 import javax.validation.constraints.NotNull;
 
-import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.response.cluster.storage.CloudStorageParametersV4Response;
+import com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.response.cluster.storage.CloudStorageParametersV1Response;
 import com.sequenceiq.cloudbreak.common.type.filesystem.FileSystemType;
 import com.sequenceiq.cloudbreak.validation.ValidGcsCloudStorageParameters;
 
@@ -13,7 +13,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel
 @ValidGcsCloudStorageParameters
-public class GcsCloudStorageParametersV4Response implements CloudStorageParametersV4Response {
+public class GcsCloudStorageParametersV1Response implements CloudStorageParametersV1Response {
 
     @ApiModelProperty
     @NotNull
@@ -38,10 +38,10 @@ public class GcsCloudStorageParametersV4Response implements CloudStorageParamete
         if (this == o) {
             return true;
         }
-        if (!(o instanceof GcsCloudStorageParametersV4Response)) {
+        if (!(o instanceof GcsCloudStorageParametersV1Response)) {
             return false;
         }
-        GcsCloudStorageParametersV4Response that = (GcsCloudStorageParametersV4Response) o;
+        GcsCloudStorageParametersV1Response that = (GcsCloudStorageParametersV1Response) o;
         return Objects.equals(serviceAccountEmail, that.serviceAccountEmail);
     }
 

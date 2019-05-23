@@ -12,7 +12,7 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_NULL)
-public class StackImageV4Response implements JsonEntity {
+public class StackImageV1Response implements JsonEntity {
     @ApiModelProperty(ImageModelDescription.IMAGE_NAME)
     private String name;
 

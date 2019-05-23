@@ -2,7 +2,6 @@ package com.sequenceiq.cloudbreak.api.endpoint.v1.distrox.views;
 
 
 import static com.sequenceiq.cloudbreak.doc.ModelDescriptions.HostGroupModelDescription.METADATA;
-import static com.sequenceiq.cloudbreak.doc.ModelDescriptions.ID;
 import static com.sequenceiq.cloudbreak.doc.ModelDescriptions.NAME;
 
 import java.util.HashSet;
@@ -12,29 +11,19 @@ import com.sequenceiq.cloudbreak.api.endpoint.v4.JsonEntity;
 
 import io.swagger.annotations.ApiModelProperty;
 
-public class HostGroupViewV4Response implements JsonEntity {
-    @ApiModelProperty(ID)
-    private Long id;
+public class HostGroupViewV1Response implements JsonEntity {
 
     @ApiModelProperty(value = NAME, required = true)
     private String name;
 
     @ApiModelProperty(METADATA)
-    private Set<HostMetadataViewV4Response> metadata = new HashSet<>();
+    private Set<HostMetadataViewV1Response> metadata = new HashSet<>();
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Set<HostMetadataViewV4Response> getMetadata() {
+    public Set<HostMetadataViewV1Response> getMetadata() {
         return metadata;
     }
 
-    public void setMetadata(Set<HostMetadataViewV4Response> metadata) {
+    public void setMetadata(Set<HostMetadataViewV1Response> metadata) {
         this.metadata = metadata;
     }
 

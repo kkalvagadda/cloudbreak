@@ -18,7 +18,7 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_NULL)
-public class CloudStorageV4Request extends CloudStorageV4Base {
+public class CloudStorageV1Request extends CloudStorageV4Base {
 
     @Valid
     @ApiModelProperty(ClusterModelDescription.LOCATIONS)
