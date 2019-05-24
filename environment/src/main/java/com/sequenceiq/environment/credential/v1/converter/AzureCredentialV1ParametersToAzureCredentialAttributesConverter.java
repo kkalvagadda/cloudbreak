@@ -1,7 +1,8 @@
-package com.sequenceiq.environment.credential.converter;
+package com.sequenceiq.environment.credential.v1.converter;
 
 import org.springframework.stereotype.Component;
 
+import com.sequenceiq.cloudbreak.util.NullUtil;
 import com.sequenceiq.environment.api.v1.credential.model.parameters.azure.AppBasedRequest;
 import com.sequenceiq.environment.api.v1.credential.model.parameters.azure.AzureCredentialRequestParameters;
 import com.sequenceiq.environment.api.v1.credential.model.parameters.azure.AzureCredentialResponseParameters;
@@ -12,62 +13,47 @@ import com.sequenceiq.environment.credential.attributes.azure.AzureCredentialAtt
 import com.sequenceiq.environment.credential.attributes.azure.RoleBasedAttributes;
 
 @Component
-public class AzureCredentialV1ParametersToAzureCredentialAttributesConverter {
+class AzureCredentialV1ParametersToAzureCredentialAttributesConverter {
 
     public AzureCredentialAttributes convert(AzureCredentialRequestParameters source) {
-        if (source == null) {
-            return null;
-        }
         AzureCredentialAttributes response = new AzureCredentialAttributes();
-        response.setAppBased(getAppBased(source.getAppBased()));
-        response.setRoleBased(getRoleBased(source.getRoleBased()));
+        NullUtil.ifNotNull(source.getAppBased(), param -> response.setAppBased(getAppBased(param)));
+        NullUtil.ifNotNull(source.getRoleBased(), param -> response.setRoleBased(getRoleBased(param)));
         response.setSubscriptionId(source.getSubscriptionId());
         response.setTenantId(source.getTenantId());
         return response;
     }
 
     public AzureCredentialResponseParameters convert(AzureCredentialAttributes source) {
-        if (source == null) {
-            return null;
-        }
         AzureCredentialResponseParameters response = new AzureCredentialResponseParameters();
+        NullUtil.ifNotNull(source.getRoleBased(), param -> response.setRoleBased(getRoleBased(param)));
         response.setAccessKey(source.getAccessKey());
-        response.setRoleBased(getRoleBased(source.getRoleBased()));
         response.setSubscriptionId(source.getSubscriptionId());
         response.setTenantId(source.getTenantId());
         return response;
     }
 
-    private RoleBasedResponse getRoleBased(RoleBasedAttributes source) {
-        if (source == null) {
-            return null;
-        }
+    private RoleBasedResponse getRoleBased(RoleBasedAttributes roleBased) {
         RoleBasedResponse response = new RoleBasedResponse();
-        response.setAppObjectId(source.getAppObjectId());
-        response.setCodeGrantFlow(source.getCodeGrantFlow());
-        response.setDeploymentAddress(source.getDeploymentAddress());
-        response.setRoleName(source.getRoleName());
-        response.setSpDisplayName(source.getSpDisplayName());
+        response.setAppObjectId(roleBased.getAppObjectId());
+        response.setCodeGrantFlow(roleBased.getCodeGrantFlow());
+        response.setDeploymentAddress(roleBased.getDeploymentAddress());
+        response.setRoleName(roleBased.getRoleName());
+        response.setSpDisplayName(roleBased.getSpDisplayName());
         return response;
     }
 
-    private RoleBasedAttributes getRoleBased(RoleBasedRequest source) {
-        if (source == null) {
-            return null;
-        }
+    private RoleBasedAttributes getRoleBased(RoleBasedRequest roleBased) {
         RoleBasedAttributes response = new RoleBasedAttributes();
-        response.setDeploymentAddress(source.getDeploymentAddress());
-        response.setRoleName(source.getRoleName());
+        response.setDeploymentAddress(roleBased.getDeploymentAddress());
+        response.setRoleName(roleBased.getRoleName());
         return response;
     }
 
-    private AppBasedAttributes getAppBased(AppBasedRequest source) {
-        if (source == null) {
-            return null;
-        }
+    private AppBasedAttributes getAppBased(AppBasedRequest appBased) {
         AppBasedAttributes response = new AppBasedAttributes();
-        response.setAccessKey(source.getAccessKey());
-        response.setSecretKey(source.getAccessKey());
+        response.setAccessKey(appBased.getAccessKey());
+        response.setSecretKey(appBased.getAccessKey());
         return response;
     }
 }
