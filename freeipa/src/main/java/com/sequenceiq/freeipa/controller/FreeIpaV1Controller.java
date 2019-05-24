@@ -10,6 +10,7 @@ import com.sequenceiq.freeipa.api.v1.freeipa.stack.model.create.CreateFreeIpaReq
 import com.sequenceiq.freeipa.api.v1.freeipa.stack.model.describe.DescribeFreeIpaResponse;
 import com.sequenceiq.freeipa.service.stack.FreeIpaCreationService;
 import com.sequenceiq.freeipa.service.stack.FreeIpaDeletionService;
+import com.sequenceiq.freeipa.service.stack.FreeIpaRootCertificateService;
 
 @Controller
 public class FreeIpaV1Controller implements FreeIpaV1Endpoint {
@@ -19,6 +20,9 @@ public class FreeIpaV1Controller implements FreeIpaV1Endpoint {
 
     @Inject
     private FreeIpaDeletionService freeIpaDeletionService;
+
+    @Inject
+    private FreeIpaRootCertificateService freeIpaRootCertificateService;
 
     @Override
     public DescribeFreeIpaResponse create(@Valid CreateFreeIpaRequest request) {
@@ -31,6 +35,15 @@ public class FreeIpaV1Controller implements FreeIpaV1Endpoint {
     @Override
     public DescribeFreeIpaResponse describe(String environmentId) {
         return null;
+    }
+
+    @Override
+    public String getRootCertificate(String environmentCrn) {
+        try {
+            return freeIpaRootCertificateService.getRootCertificate(environmentCrn);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
